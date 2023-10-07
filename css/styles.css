@@ -1,0 +1,691 @@
+:root {
+    --clr-dark-blue: hsl(233, 26%, 24%);
+    --clr-lime-green: hsl(136, 65%, 51%);
+    --clr-gright-cyan: hsl(192, 70%, 51%);
+  
+    --clr-grayish-bue: hsl(233, 8%, 62%);
+    --clr-light-grayish-blue: hsl(220, 16%, 96%);
+    --clr-very-light-gray: hsl(0, 0%, 98%);
+    --clr-white: hsl(0, 0%, 100%);
+  
+    --ff-accent: 'Public Sans', sans-serif;
+
+    --fw-bold: 700;
+    --fw-regular: 400;
+    --fw-light: 300;
+    
+  }
+
+
+
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  /*
+    2. Remove default margin
+  */
+  * {
+    margin: 0;
+  }
+  /*
+    3. Allow percentage-based heights in the application
+  */
+  html, body {
+    height: 100%;
+  }
+  /*
+    Typographic tweaks!
+    4. Add accessible line-height
+    5. Improve text rendering
+  */
+  body {
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  /*
+    6. Improve media defaults
+  */
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  /*
+    7. Remove built-in form typography styles
+  */
+  input, button, textarea, select {
+    font: inherit;
+  }
+  /*
+    8. Avoid text overflows
+  */
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  /*
+    9. Create a root stacking context
+  */
+  /***#root, #__next {
+    isolation: isolate;
+  }**** this is only when html is being injected by js/
+
+
+
+
+/******** general styling *********/
+body{
+  font-family: var(--ff-accent);
+  font-weight: var(--fw-regular);
+  color: var(--clr-grayish-bue);
+  background-color: var(--clr-very-light-gray);
+  overflow-x: hidden;
+}
+
+h2, h3{
+  font-weight: var(--fw-regular);
+  color: var(--clr-dark-blue);
+}
+
+/******** going mobile first view *********/
+/******** utilities class *********/
+.container{
+  width: 85%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+/******** header section *********/
+header{
+  background-color: var(--clr-white);
+  padding: 1.5rem 0;
+  /* for it to be above the hero__img */
+  position: relative;
+  z-index: 3;
+}
+
+/* navigation */
+
+.menu__toggle{
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.nav{
+  display: none;
+  position: absolute;
+  top: 5rem;
+  /* right: 1.8rem; I don't know why I installed it in the first place */
+  background-color: white;
+  width: 85%;
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
+  border-radius: 2%;
+}
+
+/* when menu is clicked menu opened */
+.nav__open{
+  display: block;
+}
+
+.nav__list{
+  list-style: none;
+  padding-left: 0;
+  text-align: center;
+}
+
+.nav__list li{
+  padding-top: .5rem;
+}
+
+.nav__list li a{
+  text-decoration: none;
+  color: var(--clr-dark-blue);
+}
+
+.secondary__cta{
+  display: none;
+  background: linear-gradient(to right, hsl(136, 65%, 51%), hsl(192, 70%, 51%));
+  color: var(--clr-white);
+  border-radius: 50px;
+  padding: .8rem 2rem;
+  font-size: .9rem;
+  text-decoration: none;
+}
+
+/******** hero section *********/
+
+.hero{
+  padding-bottom: 5rem;
+}
+
+.hero__flex{
+  flex-direction: column;
+}
+
+/* hero img part */
+
+.hero__img{
+  position: relative; /* so that .product__img that have position: absolute will be positioned relative to the .hero__img container, rather than being positioned relative to the entire document or their nearest positioned ancestor.  */
+  order: 1;
+  width: 100%;
+  height: 90vw;
+  z-index: 1;
+
+}
+/* applied when nav opens */
+.hero__img__none{
+  height: 75vw;
+}
+.bg__svg{
+  background-image: url(images/bg-intro-mobile.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 28rem;
+  position: relative;
+  top: -6rem;
+}
+
+.product__img{
+  position: absolute;
+  top: -7.7rem;
+  left: 0;
+  height: auto;
+  z-index: 2;
+  width: 100%;
+  max-width: 100%;
+}
+/* when nav is open using menu toggle */
+.product__img__none{
+  display: none;
+}
+
+.product__mockup__img{
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Hero text part */
+
+.hero__text{
+  text-align: center;
+  order: 2;
+}
+
+.hero__h1{
+  font-weight: var(--fw-light);
+  font-size: 2rem;
+  line-height: 44px;
+  padding-bottom: 0.5rem;
+  color: var(--clr-dark-blue);
+}
+
+.hero__para{
+  line-height: 30px;
+  padding-bottom: 2rem;
+}
+
+.hero__cta{
+  background: linear-gradient(to right, hsl(136, 65%, 51%), hsl(192, 70%, 51%));
+  color: var(--clr-white);
+  border-radius: 50px;
+  padding: .8rem 2rem;
+  font-size: .9rem;
+  text-decoration: none;
+}
+
+/******** features section *********/
+
+.features{
+  text-align: center;
+  padding: 4rem 0;
+  background-color: var(--clr-light-grayish-blue);
+
+}
+.features__h2{
+  font-size: 1.8rem;
+  line-height: 35px;
+  padding-bottom: 1rem;
+}
+
+.feature{
+  flex-direction: column;
+  padding-top: 3rem;
+}
+.feature__icon{
+  max-width: 20%;
+  height: auto;
+}
+
+.feature__h2{
+  font-size: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+/******** articles section *********/
+
+.articles{
+  padding: 4rem 0;
+  background-color: var(--clr-very-light-gray);
+}
+.article__h2{
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+.article{
+  background-color: var(--clr-white);
+  margin-bottom: 2rem;
+  border-radius: 10px;
+}
+
+.article__img{
+  border-radius: 10px 10px 0 0;
+  /* these both together helps inlarge the img upto its container and also avoide overflow */
+  width: 100%;
+  max-width: 100%; 
+  /* these are just to maintain alignment on img with each other */
+  height: 200px;
+  object-fit: cover;
+}
+
+.article__text{
+  padding: 2rem 1.5rem;
+}
+.article__author__name{
+  font-size: .8rem;
+}
+.article__title{
+  line-height: 25px;
+  padding: 0.5rem 0 0.5rem 0;
+}
+.article__para{
+  line-height: 25px;
+}
+
+/******** footer section *********/
+footer{
+  background-color: var(--clr-dark-blue);
+  color: var(--clr-white);
+  padding: 2rem 0;
+}
+.footer__flex{
+  flex-direction: column;
+}
+
+.footer__logo__socials{
+  flex-direction: column;
+}
+.footer__socials{
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem 0;
+}
+
+.footer__nav__first__list, .footer__nav__second__list{
+  list-style: none;
+  flex-direction: column;
+  padding: 0;
+  gap: .5rem;
+}
+.footer__nav__first__list{
+  padding-bottom: .5rem;
+}
+
+.footer__nav a{
+  text-decoration: none;
+  color: var(--clr-very-light-gray);
+}
+
+.footer__cta__legals{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__cta{
+  padding: .5rem 2rem;
+  margin: 1rem 0;
+  background: linear-gradient(to right, hsl(136, 65%, 51%), hsl(192, 70%, 51%));
+  color: var(--clr-white);
+  border-radius: 50px;
+  font-size: .9rem;
+  text-decoration: none;
+}
+.footer__legals{
+  color: var(--clr-grayish-bue);
+}
+
+
+
+/****************************** media quires for larger devices ******************************/
+
+/******* media queries for design purposes and for large phones 450px-749px ******/
+@media (min-width: 450px){
+  .product__img{
+    top: -10rem;
+  }
+}
+
+@media (min-width: 550px) {
+  /* header section */
+  .nav{
+    padding-top: 1rem;
+    padding-bottom: 4rem;
+  }
+  .nav__list li{
+    padding-top: 1.5rem;
+  }
+
+  /* hero section */
+  .hero__img__none{
+    height: 68vw;
+  }
+  .product__img{
+    top: -12rem;
+  }
+}
+
+@media (min-width: 650px) {
+  /* hero section */
+  .hero__img__none{
+    height: 60vw;
+  }
+  .product__img{
+    top: -15rem;
+  }
+}
+
+/******* media queries for tablets 750px ******/
+@media (min-width: 750px) {
+
+  /* header section */
+  .nav{
+    top: 7rem;
+  }
+
+  .secondary__cta{
+    display: block;
+    margin-left: 17rem;
+    padding: 0.66rem 1.4rem;
+  }
+
+
+  /* Hero section */
+  .hero__img__none{
+    height: 50vw;
+  }
+  .product__img{
+    top: -17em;
+  }
+
+  /* features section */
+  .features{
+    text-align: start;
+  }
+  .feature__flex{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .feature {
+    flex-basis: calc(50% - 1rem);
+    margin-right: 2rem; /* Add margin to create spacing between items, I think margin-right: 1rem; help use up all the available space in the flexbox container thus preventing any gap formation of any misailgnment */
+    max-width: calc(50% - 1rem);/* You can also set a max-width to limit the width of each item */
+    align-items: flex-start;
+  }
+  .feature__flex > div:last-child, .feature__flex > div:nth-child(2){
+    margin-right: 0;
+  } 
+
+  /* article section */
+  .article__h2{
+    text-align: start;
+  }
+
+  .article__flex{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .article{
+    flex-basis: calc(50% - 1rem); /*this will help divide the flex item into four part by dividing the space of flexbox into 50% and give the gave of 2rem*/
+    margin-right: 2rem; /*this value has to match the flex-basis value*/
+    max-width: calc(50% - 1rem);
+  }
+  .article__flex > div:last-child, .article__flex > div:nth-child(2){
+    margin-right: 0;
+  } 
+}
+
+@media (min-width: 850px) {
+
+  /* header section */
+  .nav{
+    display: block;
+    position: inherit;
+    background-color: white;
+    width: 0;
+    padding: 0;
+    border: none;
+  }
+  .nav__list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  .nav__list li{
+    padding: 0;
+  }
+  .secondary__cta{
+    margin-left: 0;
+    padding: 0.7rem 1.7rem;
+  }
+  .menu__toggle{
+    display: none;
+  }
+
+
+  /* Hero section */
+
+  .hero{
+    padding-bottom: 0;
+  }
+
+  .hero__flex{
+    /* setting up container properties - I commented out this part because although hero-text has container width: 85%, hero__img doesn't,
+    instead I added margin-left: 7%; in the hero-text to give it the properties of container: width: 85%; and responsiveness */
+    /* width: 85%;
+    max-width: 1200px;
+    margin: 0 auto; */
+    /* changing flex properties */
+    flex-direction: row-reverse;
+    gap: 1rem;
+  }
+  .hero__text{
+    text-align: start;
+    margin-left: 7%;
+    width: 80%;
+  }
+  .hero__cta{
+    padding: 0.9rem 1.7rem;
+  }
+  
+  .hero__img{
+    height: auto;
+  }
+  .bg__svg{
+    background-image: url(images/bg-intro-desktop.svg);
+    top: 0rem;
+    height: 30rem;
+  }
+  .product__img{
+    top: -7rem;
+  }
+}
+
+/******* media queries for laptop(S) ******/
+@media (min-width: 1024px) {
+
+  /* features section */
+  .features{
+    padding: 6rem 0;
+  }
+
+  .features__para{
+    max-width: 60%;
+  }
+
+  /* footer section */
+  footer{
+    padding: 4rem 0;
+  }
+  .footer__flex{
+    flex-direction: row;
+  }
+  .footer__socials{
+    padding: 3.2rem 0 0 0;
+  }
+  .footer__logo__socials{
+    align-items: start;
+  }
+
+  .footer__nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+  }
+  .footer__nav__first__list, .footer__nav__second__list{
+    padding: 0;
+    align-items: flex-start;
+  }
+  .footer__cta__legals{
+    margin-left: 4rem;
+    align-items: end;
+  }
+}
+
+/******* media queries for design ******/
+@media (min-width: 1200px) {
+
+  /* header section */
+  .nav__list{
+    gap: 2rem;
+  }
+
+  /* hero section */
+  .hero__flex{
+    gap: 2rem;
+  }
+  .hero__text{
+    width: 60%;
+  }
+  .hero__h1{
+    font-size: 3rem;
+    line-height: 60px;
+    padding-bottom: 1.5rem;
+  }
+  .hero__para{
+    padding-bottom: 2.5rem;
+    font-size: 1.125rem;
+  }
+  .product__img{
+    top: -13rem;
+    left: 7rem;
+  }
+
+  /* features section */
+  .features__h2{
+    font-size: 2rem;
+  }
+  .features__para {
+    max-width: 55%;
+  }
+  .feature__flex{
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: nowrap; /* Prevent wrapping */
+  }
+
+  .feature {
+    flex-basis: auto;
+    max-width: 100%;
+    margin-right: 1.5rem;
+  }
+  .feature__flex > div:nth-child(2){
+    margin-right: 1.5rem;
+  } 
+
+  .feature__icon{
+    max-width: 30%;
+  }
+
+  /* article section */
+
+  .articles{
+    padding: 6rem 0;
+  }
+  .article__h2{
+    font-size: 2rem;
+  }
+  .article__flex{
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: nowrap; /* Prevent wrapping */
+  }
+
+  .article{
+    flex-basis: auto;
+    max-width: 100%;
+    margin-right: 1.5rem;
+    margin-bottom: 0;
+  }
+  .article__flex > div:nth-child(2){
+    margin-right: 1.5rem;
+  } 
+  .article__title {
+    padding: 1rem 0 .7rem 0;
+  }
+}
+
+/******* media queries for larger desktop ******/
+@media (min-width: 1400px) {
+  /* general styling */
+  p{
+    font-size: 1.125rem;
+  }
+
+  /* hero section */
+  .bg__svg{
+    height: 38rem;
+  }
+  .product__img{
+    top: -13rem;
+    left: 10rem;
+  }
+
+  /* feature section */
+  .feature, .feature__flex > div:nth-child(2){
+    margin-right: 2rem;
+  }
+
+  /* article section */
+  .article, .article__flex > div:nth-child(2){
+    margin-right: 2rem;
+  }
+  .article__title {
+    padding: 1rem 0 1rem 0;
+  }
+}
