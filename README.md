@@ -49,5 +49,5 @@ I was not able to develop the hero-img section exactly like needed from design, 
 
 ## Author
 
-- Website - [Add your name here](https://prasant-lama.webflow.io/)
+- Website - [Prasant__Lama__Portfolio](https://prasant-lama.webflow.io/)
 
